@@ -1,2 +1,40 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿Console.WriteLine("Введите количество строк в массиве");
+int i = Convert.ToInt32(Console.ReadLine());    // Запрашиваем у пользователя количество строк в массиве
+
+string[] array = new string[i];                 // Создаем массив с этим количеством строк
+
+int j = 0;                                      // Создаем счетчик
+
+while (j < i)                                   // Пользователь вводит все строки массива
+{
+    Console.WriteLine($"Введите значение строки {(j+1)}");
+    array[j] = Console.ReadLine();
+    j++;
+}
+
+j = 0;                                          // Обнуляем счетчик
+
+string[] finalArray = new string[i];            // Создаем новый массив для итоговых строк
+
+int k = 0;                                      // Создаем второй счетчик для итогового массива
+
+while (j < i)                                   // Перебирая все строки исходного массива, 
+{                                               // записываем в итоговый массив строки больше, 
+    if (array[j].Length <= 3)                   // либо равные 3 символам (длинна). 
+    {
+        finalArray[k] = array[j];
+        k++;
+        j++;
+    }
+    else j++;
+}
+
+j = 0;                                          // Обнуляем счетчик
+
+Console.WriteLine($"Строки, длинна которых меньше, либо равна 3 символам: ");
+
+while (j < k)                                   // Выводим на экран все строки итогового массива.
+{
+    Console.WriteLine($"{finalArray[j]}");
+    j++;
+}
